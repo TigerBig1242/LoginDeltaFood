@@ -1,0 +1,117 @@
+<ion-header>
+  <div class="header">
+    <div class="back">
+      <ion-item lines="none" style="--background:none; margin-left: -45px;">
+        <ion-button mode="ios" Fill="clear" (click)="close()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-label style="text-align: center; color: white; font-size: 20px;">
+          จัดการประเภทอาหาร
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="background" style="max-width: 980px; margin-left: auto; margin-right:auto; overflow: auto;">
+    <!-- <div style="max-width: 600px; margin-left: auto; margin-right:auto;"> -->
+    <div class="inside-background" style=" max-width: 600px; margin-left: auto; margin-right:auto;">
+      <div class="body">
+
+        <ion-toolbar>
+          <ion-segment mode="ios" [(ngModel)]="selectedSegment">
+            <ion-segment-button *ngFor="let item of segmentList ; let i = index" [value]="item"
+              (click)="_segmentSelected(item,i)">
+              {{item}}
+            </ion-segment-button>
+          </ion-segment>
+        </ion-toolbar>
+
+        <ion-slides #slide (ionSlideDidChange)="_ionSlideDidChange($event)">
+          <ion-slide>
+            <form [formGroup]="newTypeFoodForm" (ngSubmit)="onSubmit()">
+              <ion-list class="au-form" inset padding>
+                <ion-label position="stacked" style="color:#666666; font-size:20px;">เพิ่มประเภท</ion-label>
+                <ion-item lines="none" style="--inner-padding-end:0px;margin:5px;">
+                  <ion-input mode="ios" type="text" placeholder="ประเภทอาหาร" formControlName="typeFood"></ion-input>
+                  <ion-button fill="clear" type="submit" class="add-typefood" (click)="alertConfirmSubmit()">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+            </form>
+
+            <div *ngIf="type[0]">
+              <ion-item lines="none" style="--background:none; margin-top: -20px; margin-bottom: 10px;">
+                <ion-label style="text-align: center; margin: 0; font-size: 25px; color: #666666;">
+                  รายการประเภทอาหาร
+                </ion-label>
+              </ion-item>
+              <ion-list class="food_manage" lines="full">
+                <ion-item style="width: 100%;" *ngFor="let f of type">
+                  <ion-label style="font-size:17px; text-align:left; color:#666666;">{{f.typefood_name}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </div>
+
+            <div *ngIf="!type[0]" style="text-align: center;">
+              <div class="img_empty">
+                <img
+                  src="assets\icon\menu.png">
+              </div>
+              <div style="margin-top:10px; padding-left: -5px;"></div>
+              <ion-label style="font-size: 20px; color:#f6090a">ไม่มีประเภทอาหาร</ion-label>
+            </div>
+          </ion-slide>
+
+          <ion-slide>
+            <form [formGroup]="editTypeFoodForm" (ngSubmit)="onSubmitEdit()">
+              <ion-list class="au-form" inset padding >
+                <ion-label position="fixed" style="color:#666666; font-size:20px;">แก้ไขประเภท</ion-label>
+                <ion-item lines="none">
+                  <ion-input mode="ios" type="text" placeholder="ประเภทอาหาร" [(ngModel)]="_type_edit.name"
+                    formControlName="edittypeFood"></ion-input>
+                  <ion-button fill="clear" type="submit" class="add-typefood"
+                    (click)="alertConfirmEdit(_type_edit.id,_type_edit.name)">
+                    <ion-icon name="settings-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+            </form>
+
+            <div *ngIf="type[0]">
+              <ion-item lines="none" style="--background:none; margin-top: -20px; margin-bottom: 10px;">
+                <ion-label style="text-align: center; margin: 0; font-size: 25px; color: #666666;">
+                  รายการประเภทอาหาร
+                </ion-label>
+              </ion-item>
+              <ion-list class="food_manage" lines="full">
+                <ion-item *ngFor="let f of type ; let i = index">
+                  <ion-label style="font-size:17px; text-align:left; color:#666666;">{{f.typefood_name}}</ion-label>
+                  <ion-button mode="ios" fill="clear" size="small" color="warning"
+                    (click)="selectTypeMenu(f.typefood_id,f.typefood_name,i)" style="--color:white; font-size:17px; ">
+                    <ion-icon name="cog-outline"></ion-icon>
+                  </ion-button>
+                  <ion-button mode="ios" fill="clear" size="small" color="danger"
+                    (click)="alertConfirmRemove(f.food_id)" style="--color:white; font-size:17px; ">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+            </div>
+
+            <div *ngIf="!type[0]" style="text-align: center;">
+              <div class="img_empty">
+                <img
+                  src="assets\icon\menu.png">
+              </div>
+              <div style="margin-top:10px; padding-left: -5px;"></div>
+              <ion-label style="font-size: 20px; color:#f6090a">ไม่มีประเภทอาหาร</ion-label>
+            </div>
+          </ion-slide>
+        </ion-slides>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

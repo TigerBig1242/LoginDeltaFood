@@ -1,0 +1,181 @@
+<ion-header #header>
+  <div class="header">
+    <!-- <div style="height: 10px;"></div> -->
+    <div class="back">
+      <ion-item lines="none" style="--background:none;">
+        <ion-label style="text-align: center; color: white; font-size: 25px;">
+          รายการสั่งซื้อ
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true" appHideheader [header]="header">
+  <div class="overlay" style="max-width: 600px; margin-left: auto; margin-right:auto; overflow: auto;">
+
+    <div style=" max-width: 600px;  margin-left: auto; margin-right:auto;">
+
+      <div class="body">
+        <div *ngIf="!orderIn[0]" style="text-align: center;">
+          <div class="img_empty">
+            <img src="assets\icon\history-store.png">
+          </div>
+          <div style="margin-top:10px; padding-left: -5px;"></div>
+          <ion-label style="font-size: 20px; color:#CF363C">ยังไม่มีรายการสั่งซื้อ</ion-label>
+        </div>
+        <div *ngIf="orderIn[0]">
+          <div *ngFor="let o of orderIn">
+            <ion-card mode="ios" *ngIf="o.finished==1" (click)="getDetailOrder(o.order_id)"
+              style="--background:white;">
+              <ion-list class="menu" lines="full">
+                <ion-item lines="full" style="--background:none; --border-color:rgba(0, 0, 0, 0.13);
+              ">
+                  <div class="store">
+                    <ion-row>
+                      <ion-col class="id_order" size="4">
+                        <ion-label>ID : {{o.order_num}}</ion-label>
+                      </ion-col>
+                      <ion-col class="time" size="8">
+                        <ion-label>{{o.date_time}} น.</ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-item>
+                <ion-list style="margin-top: 5px; background:none;">
+                  <ion-item lines="none" style="--background:none;">
+                    <div style="width: 100%;">
+                      <ion-label
+                        style="padding-left: 11px; display: inline-block; font-size: 15px; width: 100%; color: #3045a8; ">
+                        {{o.amount}} รายการ
+                      </ion-label>
+                    </div>
+                  </ion-item>
+                  <ion-item lines="none" style="margin-top: -15px; --background:none; " *ngFor="let d of o.detail">
+                    <div style="width: 100%;">
+                      <ion-label
+                        style="padding-left: 10px; display: inline-block; font-size: 15px; width: calc(100% - 90px); color: #666666; ">
+                        (x{{d.amount}}) {{d.food_name}}
+                      </ion-label>
+                      <ion-label style="color: #666666; display: inline-block; font-size: 15px;">
+                        {{d.sum_price|number}} บาท
+                      </ion-label>
+                    </div>
+                  </ion-item>
+                </ion-list>
+                <ion-item lines="none" style="margin-top:-15px; --background:none;">
+                  <div style="width: 100%;">
+                    <ion-label style="text-align: right; margin-right:10px; font-size: 17px; color: #05be4f; ">
+                      รวม {{o.order_price|number}} บาท
+                    </ion-label>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+
+            <ion-card mode="ios" *ngIf="o.finished==2" (click)="getDetailOrder(o.order_id)"
+              style="--background:#C3CCE4; box-shadow:none;">
+              <ion-list class="menu" lines="full">
+                <ion-item lines="full" style="--background:none; --border-color:rgba(0, 0, 0, 0.13);
+              ">
+                  <div class="store">
+                    <ion-row>
+                      <ion-col class="id_order" size="4">
+                        <ion-label style="color:#3045a8;">ID : {{o.order_num}}</ion-label>
+                      </ion-col>
+                      <ion-col class="time" size="8">
+                        <ion-label>{{o.date_time}} น.</ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-item>
+                <ion-list style="margin-top: 5px; background:none;">
+                  <ion-item lines="none" style="--background:none;">
+                    <div style="width: 100%;">
+                      <ion-label
+                        style="padding-left: 11px; display: inline-block; font-size: 15px; width: 100%; color: #3045a8; ">
+                        {{o.amount}} รายการ
+                      </ion-label>
+                    </div>
+                  </ion-item>
+                  <ion-item lines="none" style="margin-top: -15px; --background:none; " *ngFor="let d of o.detail">
+                    <div style="width: 100%;">
+                      <ion-label
+                        style="padding-left: 10px; display: inline-block; font-size: 15px; width: calc(100% - 90px); color: #666666; ">
+                        (x{{d.amount}}) {{d.food_name}}
+                      </ion-label>
+                      <ion-label style="color: #666666; display: inline-block; font-size: 15px;">
+                        {{d.sum_price|number}} บาท
+                      </ion-label>
+                    </div>
+                  </ion-item>
+                </ion-list>
+                <ion-item lines="none" style="margin-top:-15px; --background:none;">
+                  <div style="width: 100%;">
+                    <ion-label style="text-align: right; margin-right:10px; font-size: 17px; color: #3045a8; ">
+                      รวม {{o.order_price|number}} บาท
+                    </ion-label>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+
+            <ion-card mode="ios" *ngIf="o.finished==3" (click)="getDetailOrder(o.order_id)"
+              style="--background:#05be4f4d; box-shadow:none;">
+              <ion-list class="menu" lines="full">
+                <ion-item lines="full" style="--background:none; --border-color:rgba(0, 0, 0, 0.13);
+              ">
+                  <div class="store">
+                    <ion-row>
+                      <ion-col class="id_order" size="4">
+                        <ion-label style="color:#3045a8;">ID : {{o.order_num}}</ion-label>
+                      </ion-col>
+                      <ion-col class="time" size="8">
+                        <ion-label>{{o.date_time}} น.</ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-item>
+                <ion-list style="margin-top: 5px; background:none;">
+                  <ion-item lines="none" style="--background:none;">
+                    <div style="width: 100%;">
+                      <ion-label
+                        style="padding-left: 11px; display: inline-block; font-size: 15px; width: 100%; color: #3045a8; ">
+                        {{o.amount}} รายการ
+                      </ion-label>
+                    </div>
+                  </ion-item>
+                  <ion-item lines="none" style="margin-top: -15px; --background:none; " *ngFor="let d of o.detail">
+                    <div style="width: 100%;">
+                      <ion-label
+                        style="padding-left: 10px; display: inline-block; font-size: 15px; width: calc(100% - 90px); color: #666666; ">
+                        (x{{d.amount}}) {{d.food_name}}
+                      </ion-label>
+                      <ion-label style="color: #666666; display: inline-block; font-size: 15px;">
+                        {{d.sum_price|number}} บาท
+                      </ion-label>
+                    </div>
+                  </ion-item>
+                </ion-list>
+                <ion-item lines="none" style="margin-top:-15px; --background:none;">
+                  <div style="width: 100%;">
+                    <ion-label style="text-align: right; margin-right:10px; font-size: 17px; color: #3045a8; ">
+                      รวม {{o.order_price|number}} บาท
+                    </ion-label>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+          </div>
+
+
+          <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="กำลังโหลดรายการ..">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

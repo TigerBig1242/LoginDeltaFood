@@ -1,0 +1,101 @@
+<ion-header #header>
+  <div class="header">
+    <!-- <div style="height: 10px;"></div> -->
+    <div class="back">
+      <ion-item lines="none" style="--background:none;">
+        <ion-label style="text-align: center; color: white; font-size: 25px;">
+          จัดการร้าน
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true" appHideheader [header]="header">
+  <div class="background" style="max-width: 600px; margin-left: auto; margin-right:auto; overflow: auto;">
+    <!-- <div style="max-width: 600px; margin-left: auto; margin-right:auto;"> -->
+    <div class="inside-background" style=" max-width: 600px; margin-left: auto; margin-right:auto;">
+      <div class="body">
+        <ion-item lines="full" style="--min-height: 60px; padding-top: 10px;--border-color:rgba(0, 0, 0, 0.13);">
+          <div class="store">
+            <ion-row>
+              <ion-col class="open_store" size="10">
+                <ion-item lines="none" style="margin-bottom: 10px; margin-left: -10px;">
+                  <ion-label>เปิด/ปิด ร้านอาหาร</ion-label>
+                </ion-item>
+              </ion-col>
+              <ion-col class="switch" size="2">
+                <ion-toggle style="margin-top: 0;" mode="ios" [(ngModel)]="statusStore"
+                  (ionChange)="changeStatusStore()"></ion-toggle>
+              </ion-col>
+            </ion-row>
+          </div>
+
+        </ion-item>
+
+        <ion-list lones="full" style=" margin-bottom: 15px; padding: 0; background: none;">
+          <ion-item class="bottom_add" lines="none">
+            <ion-col class="add">
+              <ion-button class="add-food" fill="clear" mode="ios" (click)="openPopover($event)">
+                <ion-icon slot="icon-only" name="add-circle-outline" style="font-size:25px"></ion-icon>
+              </ion-button>
+              <ion-button Fill="clear" mode="ios" (click)="getHistoryTrash()">
+                <ion-icon name="trash-outline" style="font-size:25px"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-item>
+          <ion-list style="padding: 0 0 0 30px; background: none;">
+            <div class="img_success">
+              <img src="assets/icon/store.png" >
+            </div>
+          </ion-list>
+          <ion-item lines="none">
+            <ion-label style="margin: 0; text-align: center; font-size: 25px; color:#434343;">ร้าน {{storeName}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-list class="food_manage" lines="full" *ngIf="foodList[0]">
+          <ion-list *ngFor="let food of foodList" style="background:white; padding-bottom: 0;">
+            <ion-list-header>
+              <ion-label>{{food.typefood_name}}</ion-label>
+            </ion-list-header>
+            <ion-item style="overflow: initial; --background: white;--border-color: rgba(0, 0, 0, 0.13);" *ngFor="let f of food.food">
+              <div class="edit_food">
+                <ion-row>
+
+                  <ng-template [ngIf]="f.status == 0 ">
+                    <ion-col class="switch" size="1.5">
+                      <ion-toggle mode="ios" checked="false" (ionChange)="changeStatusFood($event,f.status,f.food_id)">
+                      </ion-toggle>
+                    </ion-col>
+                  </ng-template>
+
+                  <ng-template [ngIf]="f.status == 1 ">
+                    <ion-col class="switch" size="1.5">
+                      <ion-toggle mode="ios" checked="true" (ionChange)="changeStatusFood($event,f.status,f.food_id)">
+                      </ion-toggle>
+                    </ion-col>
+                  </ng-template>
+
+                  <ion-col class="open_store" size="7.5">
+                    <ion-item lines="none" style="margin-top:-10px;">
+                      <ion-label style="font-size:17px; text-align:left;">{{f.food_name}}</ion-label>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col class="fixed" size="1.5" style="padding-right: 5px;">
+                    <ion-button mode="ios" fill="outline" (click)="editMenu(f.food_id)">แก้ไข
+                    </ion-button>
+                  </ion-col>
+                  <ion-col class="delete" size="1.5" style="padding-left: 5px;">
+                    <ion-button mode="ios" fill="outline" (click)="presentAlertDelete(f.food_id)">ลบ</ion-button>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

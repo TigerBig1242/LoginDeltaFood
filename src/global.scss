@@ -1,0 +1,251 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.toolbar-background {
+  background: rgb(67, 97, 238);
+  background: linear-gradient(
+    180deg,
+    rgba(67, 97, 238, 1) 0%,
+    rgba(34, 49, 119, 1) 100%
+  );
+}
+* {
+  font-family: "Prompt", sans-serif;
+}
+.my-custom-class .modal-wrapper {
+  width: 90%;
+  --border-radius: 5px;
+  --height: 66%;
+}
+.my-custom-class-manage-user .modal-wrapper {
+  width: 600px;
+  margin: 0 20px 0 20px;
+  --border-radius: 5px;
+  --height: 70%;
+}
+.my-custom-class-new-foodtype .modal-wrapper {
+  width: 600px;
+  margin: 0 20px 0 20px;
+  --border-radius: 5px;
+  --height: 70%;
+}
+.my-custom-class-detail-option .modal-wrapper {
+  width: 600px;
+  margin: 0 20px 0 20px;
+  --border-radius: 5px;
+  --height: 80%;
+}
+.my-custom-class-options .modal-wrapper {
+  width: 600px;
+  // margin: 0 20px 0 20px;
+  // --border-radius: 5px;
+  // --height: 80%;
+}
+.my-custom-class-option {
+  .modal-wrapper {
+    --height: auto;
+    margin: 0 20px 0 20px;
+    .ion-page {
+      position: relative;
+      contain: content;
+      max-height: 90vh;
+      .modal-content {
+        overflow: auto;
+      }
+    }
+  }
+}
+.customToastClass {
+  font-weight: bold;
+  text-align: left !important;
+  // margin-top: -60px;
+  font-size: 15px;
+  color:white;
+}
+
+.my-custom-class-popover {
+  --color: #3045a8;
+}
+
+.sc-ion-picker-md-h{
+  --background:white;
+  --border-color:none;
+}
+
+.picker-md .picker-prefix,
+.picker-md .picker-suffix,
+.picker-md .picker-opt.picker-opt-selected {
+  color: #3045a8;
+}
+.picker-md .picker-button,
+.picker-md .picker-button.activated {
+  color: #3045a8;
+}
+.picker-columns.sc-ion-picker-md{
+  color:#66666664;
+}
+
+ion-alert.select-alert {
+  --background: white !important;
+
+  button {
+    --color: #3045a8 !important;
+  }
+  .sc-ion-alert-ios {
+    color: #3045a8;
+  }
+  .alert-radio-group.sc-ion-alert-ios,
+  .alert-checkbox-group.sc-ion-alert-ios {
+    border-top: 0.55px solid #66666664;
+  }
+  [aria-checked="true"].sc-ion-alert-ios .alert-radio-label.sc-ion-alert-ios {
+    color: #3045a8 !important;
+  }
+  .alert-button.sc-ion-alert-ios {
+    border-top: 0.55px solid #66666664;
+    border-right: 0.55px solid #66666664;
+  }
+  [aria-checked="true"].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios {
+    border-color: #3045a8;
+  }
+  .alert-title.sc-ion-alert-ios {
+    // color: #3045a8;
+    font-size: 19px;
+  }
+  .alert-radio-label.sc-ion-alert-ios {
+    color: #666666bb;
+    font-size: 16px;
+  }
+}
+
+.alert-sub-title.sc-ion-alert-md,
+.alert-title.sc-ion-alert-md {
+  color: #3045a8;
+}
+.alert-button.sc-ion-alert-md {
+  color: #3045a8;
+}
+.alert-message.sc-ion-alert-md,
+.alert-input-group.sc-ion-alert-md {
+  color: #666666;
+}
+.my-custom-class .secondary {
+  color: #666666;
+}
+.my-custom-class-alert-login {
+  --backdrop-opacity: 0.95;
+  .alert-message.sc-ion-alert-ios {
+    color: #666666;
+    font-size: 16px;
+  }
+  .alert-title.sc-ion-alert-ios {
+    color: #3045a8;
+    font-size: 19px;
+  }
+  .alert-button.sc-ion-alert-ios .alert-button-inner.sc-ion-alert-ios {
+    color: #3045a8;
+  }
+  .alert-message.sc-ion-alert-md {
+    color: #666666;
+    font-size: 16px;
+  }
+  .alert-title.sc-ion-alert-md {
+    color: #3045a8;
+    font-size: 19px;
+  }
+  .alert-button.sc-ion-alert-md .alert-button-inner.sc-ion-alert-md {
+    color: #3045a8;
+    font-size: 16px;
+  }
+}
+.customAlertNewType {
+  .alert-button.sc-ion-alert-ios .alert-button-inner.sc-ion-alert-ios {
+    color: #3045a8;
+  }
+  .alert-button.sc-ion-alert-md .alert-button-inner.sc-ion-alert-md {
+    color: #3045a8;
+  }
+  .alert-message.sc-ion-alert-ios {
+    color: #666666;
+    font-size: 16px;
+  }
+  .alert-message.sc-ion-alert-md {
+    color: #666666;
+    font-size: 16px;
+  }
+  .alert-title.sc-ion-alert-ios {
+    font-size: 19px;
+  }
+  .alert-title.sc-ion-alert-md {
+    font-size: 19px;
+  }
+}
+.my-custom-class .primary {
+  color: #3045a8;
+}
+.my-custom-class-delete-new-type .secondary {
+  color: #666666;
+}
+.my-custom-class-delete-new-type .primary {
+  color: #3045a8;
+}
+.my-custom-class-alert-confirm {
+  .alert-message.sc-ion-alert-ios {
+    color: #666666;
+    font-size: 15px;
+  }
+  .secondary {
+    color: #666666;
+  }
+  .primary {
+    color: #3045a8;
+  }
+}
+.sc-ion-alert-md-h{
+  --background:white;
+}
+.list-ios {
+  background: none;
+}
+.alert-wrapper.sc-ion-alert-ios{
+  background: #fff;
+}
+.alert-title.sc-ion-alert-ios{
+  color: #000;
+}
+.alert-button.sc-ion-alert-ios:last-child {
+  border: 0.55px solid #66666642;
+}
+.alert-button.sc-ion-alert-ios {
+  border: 0.55px solid #66666642;
+}
+.list-md{
+  background:none;
+}
+ion-item.sc-ion-input-ios-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-ios-h{
+  --padding-start: 10px;
+}

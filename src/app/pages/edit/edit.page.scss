@@ -1,0 +1,130 @@
+ion-content{
+  --background:#e8e8e8 0% 0% no-repeat padding-box;
+}
+.header {
+  background: rgb(67, 97, 238);
+  background: linear-gradient(
+    180deg,
+    rgba(67, 97, 238, 1) 0%,
+    rgba(34, 49, 119, 1) 100%
+  );
+  height: 60px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+
+  .back {
+    text-align: left;
+    ion-button {
+      width: 60px;
+      margin-left: 25px;
+    }
+    ion-icon {
+      color: #fff;
+      font-size: 30px;
+    }
+    ion-label{
+      margin: 15px 0px 10px;
+    }
+  }
+}
+.overlay {
+  height: 100%;
+  background: #e8e8e8 0% 0% no-repeat padding-box;
+
+  .category {
+    margin-top: -45px;
+    height: 90px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+    .item {
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+      padding-top: 8px;
+
+      ion-label {
+        width: 100%;
+        display: inline;
+        font-size: 30px;
+        color: #666666;
+        opacity: 1;
+      }
+    }
+  }
+
+  .body {
+    margin-bottom: 50px;
+    ion-label {
+      font-size: 25px;
+    }
+    ion-input {
+      font-size: 20px;
+    }
+
+    .image {
+      text-align: center;
+      .img {
+        text-align: center;
+        margin: auto !important;
+        img {
+          min-height: 200px;
+          min-width: 300px;
+          max-height: 200px;
+          max-width: 300px;
+          object-fit: cover;
+          background-size: cover;
+          background-position: center;
+        }
+      }
+    }
+
+    .button-add-img {
+      margin: auto;
+      --background:none;
+      ion-button {
+        --border-radius: 5px;
+        --color: #3045a8;
+        font-size: medium;
+        font-weight: 100;
+      }
+    }
+
+    .button-add-food {
+      text-align: center;
+      width: 100%;
+      margin: auto;
+      padding-top: 15px;
+      margin-bottom: 20px;
+
+      ion-button {
+        --background: #3045a8;
+        --background-activated: #223177;
+        font-size: medium;
+        height: 50px;
+        max-width: 200px;
+      }
+      ion-icon {
+        text-align: center;
+        padding-right: 5px;
+        font-size: 25px;
+      }
+    }
+  }
+  .card_size {
+    width: 100%;
+    position: absolute;
+    top: 75px;
+    max-width: 600px;
+  }
+  ion-select {
+    color: #3045a8;
+    ion-select-option {
+      --background: white;
+    }
+  }
+  ion-input {
+    color: #3045a8;
+  }
+}

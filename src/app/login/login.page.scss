@@ -1,0 +1,95 @@
+.ion-padding {
+    --background: linear-gradient(197deg, rgba(45, 58, 106, 1) 0%, rgba(41, 50, 93, 1) 13.5%, rgba(28, 32, 62, 1) 33.33%, rgba(16, 21, 46, 1) 100%) !important;
+    // --background: linear-gradient(197deg, rgba(45, 58, 106, 1) 0%, rgba(41, 50, 93, 1) 13.5%, rgba(28, 32, 62, 1) 33.33%, rgba(16, 21, 46, 1) 100%) !important;
+}
+
+.input-login {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15rem;
+    .ion-input-username {
+        background-color: #69729440;
+        --placeholder-color: rgb(213, 214, 218);
+        box-shadow: 2px 3px 3px 0px #B4B4D6;
+        --padding-start: 15px;
+        //--placeholder-opacity: black;
+        border-radius: 25px;
+        height: 55px;
+        width: 85%;
+        color: white;
+        .icon-person {
+            margin-left: 15px;
+        }
+    }
+
+    .ion-input-password {
+        background-color: #69729440;
+        --placeholder-color: rgb(213, 214, 218);
+        box-shadow: 2px 3px 3px 0px #B4B4D6;
+        --padding-start: 15px;
+        //--placeholder-opacity: white;
+        border-radius: 25px;
+        height: 55px;
+        width: 85%;
+        color: white;
+        margin-top: 15px;
+        .icon-email {
+            margin-left: 15px;
+        }
+    }
+}
+
+.topic-login {
+    justify-items: center;
+    align-items: center;
+    color: white;
+    font-size: 35px;
+    font-weight: 20px;
+    margin-bottom: 25px;
+}
+
+.title {
+    // margin-bottom: 0;
+    // --background: rgba(20, 140, 245, 0.411);
+    // border-bottom-left-radius: 5px;
+    // border-bottom-right-radius: 5px;
+}
+
+
+.title h4 {
+    //  background-color: rgba(20, 140, 245, 0.411);
+    --padding-start: 15px;
+     color: black;
+     font-size: 30px;
+}
+
+.ion-button-login  {
+    .button-login {
+    //margin: 0 30px 0 30px;
+    border-radius: 25px;
+    //--placeholder-color: rgb(213, 214, 218);
+    //box-shadow: 2px 3px 3px 0px #f1eded;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 15%;
+    width: 5%;
+    --color: black;  
+    //--background: #1d99ef;
+    --background: #91b7f9;
+    --box-shadow: 2px 3px 3px 0px #B4B4D6;
+    }
+}
+ 
+// .button-login {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 85%;
+// }
+
+.close a {
+    text-decoration: none;
+}

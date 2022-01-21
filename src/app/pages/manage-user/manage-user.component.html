@@ -1,0 +1,46 @@
+<ion-header #header>
+  <div class="header">
+    <div class="back">
+      <ion-item lines="none" style="--background:none; margin-left: -45px;">
+        <ion-button mode="ios" Fill="clear" (click)="close()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-label style="text-align: center; color: white; font-size: 20px;">
+          จัดการผู้ใช้
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="background" style="max-width: 600px; margin-left: auto; margin-right:auto; overflow: auto;">
+  <div class="inside-background" style=" max-width: 600px; margin-left: auto; margin-right:auto;">
+      <div class="body">
+        <ion-item class="header-body" lines="full">
+          <ion-label>เปิด/ปิด ผู้ดูแลร้าน</ion-label>
+        </ion-item>
+        <ion-list class="food_manage" lines="full">
+          <ion-item class="list" *ngFor="let u of user">
+            <img
+              src="{{u.pictureUrl}}">
+            <div class="block">
+              <div class="block-a">
+                <ion-label>ชื่อ : {{u.name}}</ion-label>
+              </div>
+
+              <div *ngIf="u.m_status == 0" class="block-b">
+                <ion-toggle mode="ios" checked="false"  (ionChange)="changeStatusUser(u.m_id,u.m_status)">
+                </ion-toggle>
+              </div>
+              <div *ngIf="u.m_status != 0" class="block-b">
+                <ion-toggle mode="ios" checked="true"  (ionChange)="changeStatusUser(u.m_id,u.m_status)">
+                </ion-toggle>
+              </div>
+            </div>
+
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+</ion-content>

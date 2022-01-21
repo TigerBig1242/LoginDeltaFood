@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <div class="back">
+      <ion-item lines="none" style="--background:none; margin-left: -45px;">
+        <ion-button mode="ios" Fill="clear" (click)="close()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-label>ตัดรูปภาพ</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <ion-card style="--background: white;">
+    <input type="file" style="display: none" accept="image/*" #inputfile (change)="fileChangeEvent($event)" />
+    <ion-button mode="ios" class="button-inputImg" Fill="clear" (click)="inputfile.click()">
+      <ion-icon name="image-outline"></ion-icon>&nbsp;
+      เลือกรูปภาพ
+    </ion-button>
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+      format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"></image-cropper>
+    <!-- <img [src]="croppedImage" /> -->
+  </ion-card>
+  <div class="button-save">
+    <ion-button mode="ios" (click)="alertConfirmSubmit()">
+      <ion-icon name="save-outline"></ion-icon>
+      บันทึก
+    </ion-button>
+  </div>
+</ion-content>

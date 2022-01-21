@@ -1,0 +1,51 @@
+<ion-header>
+  <div class="header">
+    <div class="back">
+      <ion-item lines="none" style="--background:none; margin-left: -45px;">
+        <ion-button mode="ios" Fill="clear" (click)="close()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-label style="text-align: center; color: white; font-size: 20px;">
+          ถังขยะ
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="background" style="max-width: 600px; margin-left: auto; margin-right:auto; overflow: auto;">
+    <div class="inside-background" style=" max-width: 600px; margin-left: auto; margin-right:auto;">
+      <div class="body">
+        <div *ngIf="food[0]">
+          <ion-list class="trash">
+            <div class="img_success">
+              <img src="assets\icon\trash2.png" alt="">
+            </div>
+          </ion-list>
+          <ion-item lines="none" style="--background:none; margin-top: -20px; margin-bottom: 10px;">
+            <ion-label style="text-align: center; margin: 0; font-size: 20px; color: #666666;">
+              เมนูอาหาร
+            </ion-label>
+          </ion-item>
+          <ion-list class="food_manage" lines="full">
+            <ion-item style="width: 100%;" *ngFor="let f of food">
+              <ion-label style="font-size:17px; text-align:left; color:#666666;">{{f.food_name}}</ion-label>
+              <ion-button mode="ios" fill="clear" size="small" color="warning" (click)="getFoodRestore(f.food_id)"
+                style="--color:white; font-size:17px; margin-right: 20px;">
+                <ion-icon name="caret-up-outline"></ion-icon>กู้คืน
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <div *ngIf="!food[0]" style="text-align: center; margin-top:100px;">
+          <div class="img_empty">
+            <img src="assets\icon\trash.png">
+          </div>
+          <div style="margin-top:10px; padding-left: -5px;"></div>
+          <ion-label style="font-size: 20px; color:#CF363C">ไม่มีเมนูในถังขยะ</ion-label>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

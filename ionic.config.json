@@ -1,0 +1,10 @@
+{
+  "name": "marketStore2",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

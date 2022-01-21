@@ -1,0 +1,119 @@
+<ion-content [fullscreen]="true">
+
+  <div *ngIf="segmentList" style="width: 100%;">
+    <div style="overflow: auto;">
+      <!-- <ion-slides [options]='slideOpts'>
+      <ion-slide *ngFor="let item of segmentList ; let i = index">
+      <ion-segment mode="ios" [(ngModel)]="selectedSegment" style="display: flex;justify-content: space-evenly; width: 100%; flex-direction: row;flex-wrap: nowrap;"> -->
+      <div class="seg_header">
+        <ion-button class="{{segClass[i]}}" mode="ios" *ngFor="let item of segmentList ; let i = index"
+          (click)="_segmentSelected(item,i)">
+
+          <!-- <ion-segment-button [value]="item" (click)="_segmentSelected(item,i)"> -->
+          {{item.title}}
+          <!-- </ion-segment-button>
+          </ion-segment> -->
+        </ion-button>
+      </div>
+      <!-- </ion-slide>
+    </ion-slides> -->
+    </div>
+  </div>
+
+  <div style="text-align: right; margin-bottom: -20px;">
+    <ion-button mode="ios" fill="clear" class="add-content" (click)="getNewTitle()">
+      <ion-icon name="add-circle-outline"></ion-icon>&nbsp;เพิ่มตัวเลือก
+    </ion-button>
+  </div>
+
+  <div>
+    <ion-slides #slide (ionSlideDidChange)="_ionSlideDidChange($event)" style="width: 100%;">
+      <ion-slide *ngFor="let item of segmentList ; let i = index">
+        <div>
+          <ion-card mode="ios">
+            <ion-list class="au-form" inset padding>
+              <ion-label position="stacked" style="color:#666666; font-size:30px;">หัวข้อตัวเลือก</ion-label>
+              <ion-input mode="ios" type="text" placeholder="หัวข้อตัวเลือก" [(ngModel)]="item.title">
+              </ion-input>
+            </ion-list>
+            <div class="del-title">
+              <ion-button fill="clear" mode="ios" (click)="delTitle(i)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card>
+
+          <div style="text-align: right; margin-top: -20px; margin-bottom: -20px;">
+            <ion-button mode="ios" fill="clear" class="add-content" (click)="getNewForm(i)">
+              <ion-icon name="add-circle-outline"></ion-icon>&nbsp;เพิ่ม
+            </ion-button>
+          </div>
+
+          <ion-card mode="ios">
+            <ion-list class="au-form" inset padding>
+              <ion-label position="stacked" style="color:#666666; font-size:20px;">เลือกรายละเอียดได้ไม่เกิน
+                {{item.option.length}} อย่าง</ion-label>
+              <ion-input mode="ios" type="number" [(ngModel)]="item.select_option" (change)="detectCount(i)">
+              </ion-input>
+            </ion-list>
+          </ion-card>
+
+          <ion-card mode="ios" *ngFor="let data of item.option; let j = index">
+            <ion-list class="au-form" lines="none" inset padding>
+              <ion-label style="color: #666666; font-size: 20px;" position="stacked">ชื่อ <span
+                  *ngIf="data.optionD.default" style="color: #2dd36f;">(ค่าเริ่มต้น)</span></ion-label>
+              <ion-input mode="ios" type="text" placeholder="ชื่อ" [(ngModel)]="data.title">
+              </ion-input>
+              <ion-label style="color: #666666; font-size: 25px;" position="stacked">ราคา</ion-label>
+              <ion-input mode="ios" type="number" placeholder="ราคา" [(ngModel)]="data.optionD.price">
+              </ion-input>
+
+              <!-- <div class="block" *ngIf="data.default">
+                <div class="block-a">
+                  <ion-label>ค่าเริ่มต้น</ion-label>
+                </div>
+                <ion-toggle mode="ios" disabled="true" [(ngModel)]="data.default">
+                </ion-toggle>
+              </div> -->
+
+              <div class="button-del" *ngIf="j!=0">
+                <ion-button fill="clear" mode="ios" (click)="delForm(i,j)">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-list>
+          </ion-card>
+          <div class="button-submit">
+            <ion-button class="save" mode="ios" (click)="onSubmit()">
+              <ion-icon name="save-outline"></ion-icon>&nbsp;
+              บันทึก
+            </ion-button>
+            <ion-button class="close" fill="outline" mode="ios" (click)="close()">
+              <ion-icon name="close-circle-outline"></ion-icon>&nbsp;
+              ปิดออก
+            </ion-button>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+    <div *ngIf="!segmentList[0]" style="text-align: center; margin-bottom: 270px;">
+      <div class="img_empty">
+        <img src="assets\icon\history-store.png">
+      </div>
+      <div style="height:20px; padding-left: -5px;"></div>
+      <ion-label style="font-size: 20px; color:#666666;">ไม่มีตัวเลือกการเพิ่มอาหาร</ion-label>
+    </div>
+
+    <div class="button-submit" *ngIf="segmentList[0]==null">
+      <ion-button class="save" mode="ios" (click)="onSubmit()">
+        <ion-icon name="save-outline"></ion-icon>&nbsp;
+        บันทึก
+      </ion-button>
+      <ion-button class="close" fill="outline" mode="ios" (click)="close()">
+        <ion-icon name="close-circle-outline"></ion-icon>&nbsp;
+        ปิดออก
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

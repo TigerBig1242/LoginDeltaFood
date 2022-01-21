@@ -1,0 +1,76 @@
+<ion-header>
+  <div class="header">
+    <div class="back">
+      <ion-item lines="none" style="--background:none; margin-left: -45px;">
+        <ion-button mode="ios" Fill="clear" (click)="backToManagement()">
+          <ion-icon name="chevron-back-outline">
+          </ion-icon>
+        </ion-button>
+        <ion-label style="text-align: center; color: white; padding-right: 38px; font-size: 25px;">
+          เพิ่มเมนูอาหาร
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="overlay" style="max-width: 600px; margin-left: auto; margin-right:auto; overflow: auto;">
+    <div style=" max-width: 600px;  margin-left: auto; margin-right:auto;">
+      <div class="card_size">
+        <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+          <div class="body">
+            <ion-card mode="ios" style="margin-top:25px; --background:white;">
+              <ion-list style="background:none;">
+                <ion-item lines="none" style="--background:none;">
+                  <ion-label style="color: #666666;" position="stacked">ชื่ออาหาร</ion-label>
+                  <ion-input type="text" placeholder="ชื่ออาหาร" formControlName="food_name"></ion-input>
+                </ion-item>
+                <ion-item lines="none" style="--background:none;">
+                  <ion-label style="color: #666666;" position="stacked">ราคา</ion-label>
+                  <ion-input type="number" placeholder="ราคา" formControlName="food_price"></ion-input>
+                </ion-item>
+
+                <!-- <ion-list> -->
+                <ion-item lines="none" style="--background:none;">
+                  <ion-label style="color: #666666;">ประเภทอาหาร</ion-label>
+                  <ion-select value="ประเภทอาหาร" okText="ยืนยัน" cancelText="ยกเลิก" formControlName="typefood_id">
+                    <ion-select-option value="0">ไม่ระบุ
+                    </ion-select-option>
+                    <ion-select-option *ngFor="let emp of type" [value]="emp.typefood_id">{{emp.typefood_name}}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <!-- </ion-list> -->
+                <ion-list style="background:none;">
+                  <input type="file" style="display: none" accept="image/*" #inputfile (change)="selectedFile($event)">
+                  <ion-item class="button-add-img" lines="none" style="--background:none;">
+                    <ion-label style="color: #666666;">รูปอาหาร</ion-label>
+                    <!-- <ion-button (click)="inputfile.click()">เพิ่มรูปภาพ</ion-button> -->
+                    <ion-button Fill="clear" mode="ios" (click)="presentModal()">
+                      <ion-icon name="image-outline"></ion-icon>&nbsp;
+                      เพิ่มรูปภาพ
+                    </ion-button>
+                  </ion-item>
+                  <div class="image">
+                    <div class="img">
+                      <img *ngIf="!base64Img" src="assets\none-image.jpg">
+                      <img *ngIf="base64Img" [src]="base64Img">
+                    </div>
+                  </div>
+                  <div class="button-add-food" lines="none" style="width: 100%;">
+                    <ion-button mode="ios" style="text-align:center; width: 100%; font-size:20px;" type="submit"
+                      (click)="alertConfirmSubmit()">
+                      <ion-icon name="add-circle-outline"></ion-icon>
+                      เพิ่มอาหาร
+                    </ion-button>
+                  </div>
+                </ion-list>
+
+              </ion-list>
+            </ion-card>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>

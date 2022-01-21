@@ -1,0 +1,208 @@
+ion-content {
+  --background: #fff;
+}
+ion-toolbar {
+  --background: white;
+}
+ion-slides {
+  height: 100%;
+  ion-slide {
+    height: 100%;
+  }
+}
+// ion-segment {
+//   --background: #fff;
+//   height: 100%;
+//   overflow-x: hidden;
+//   overflow-y: auto;
+// }
+// ion-segment-button {
+//   --background-checked: #3045a8;
+//   --color-checked: #fff;
+//   --color: #666666;
+//   --background-activated: #3045a8;
+//   --background-hover: #3045a8;
+//   --indicator-color: transparent !important;
+// }
+ion-content {
+  --background: #e8e8e8;
+}
+ion-input {
+  border-radius: 10px !important;
+  padding-right: 30px;
+  // font-size: 1em;
+  font-size: 20px;
+  border: 1px solid #f1f1f1 !important;
+  --background: rgb(219, 219, 219) !important;
+  --padding-start: 10px;
+  max-width: 90vw; // this is applying perfectly
+  max-height: 10vh;
+  color: #3045a8;
+  margin-right: 2px;
+}
+.au-form {
+  text-align: left;
+  background: none;
+  margin-bottom: 15px;
+  ion-item {
+    --inner-padding-end: 0px;
+    margin: 5px;
+    --background: none;
+  }
+}
+.add-typefood {
+  //   height: 30px;
+  height: -webkit-fill-available;
+  --background: #3045a8;
+  --background-activated: #3045a8;
+  --border-color: #3045a8;
+  --color: white;
+  // --color-activated: #223177;
+  --background-activated-opacity: 1;
+  font-size: 20px;
+}
+.block {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  .block-a {
+    padding-top: 10px;
+    display: inline-block;
+    width: calc(100% - 55px);
+    ion-label {
+      font-size: 20px;
+      color: #666666;
+    }
+  }
+  .block-b {
+    float: right;
+    display: inline-block;
+    width: 50px;
+    margin-top: 10px;
+    margin-right: 10px;
+    ion-button {
+      font-size: 15px;
+      margin-top: 15px;
+    }
+  }
+}
+.list {
+  --inner-padding-end: 0;
+  --background: none;
+  --border-color: 0;
+  --padding-start: 0;
+}
+ion-toggle {
+  margin-top: 9px;
+  --background: rgb(219, 219, 219);
+  --background-checked: linear-gradient(
+    180deg,
+    rgba(67, 97, 238, 1) 0%,
+    rgba(34, 49, 119, 1) 100%
+  );
+
+  --handle-background: white;
+  --handle-background-checked: white;
+}
+ion-card {
+  --background: #fff;
+}
+.add-content {
+  --border-color: #3045a8;
+  --color: #3045a8;
+  --background-activated-opacity: 1;
+  font-size: 20px;
+}
+.button-del {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  // margin-top: 10px;
+  // margin-bottom: -10px;
+  text-align: right;
+  ion-button {
+    // --border-radius: 50%;
+    --color: #cf363c;
+    // --border-color: #cf363c;
+    // --background: #cf363c;
+    // --background-activated: #cf363c;
+    // --background-activated-activated: 1;
+    font-size: medium;
+    font-weight: 100;
+  }
+  ion-icon {
+    font-size: 25px;
+  }
+}
+.button-submit {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 25px;
+  text-align: right;
+  .close {
+    --color: #666666;
+    --color-activated: #fff;
+    --border-color: #66666645;
+    --background: #fff;
+    --background-activated: #666666;
+    --background-activated-activated: 1;
+    font-size: medium;
+    font-weight: 100;
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+  .save {
+    --color: #fff;
+    --background: #3045a8;
+    --background-activated: #223177;
+    --background-activated-activated: 1;
+    font-size: medium;
+    font-weight: 100;
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+}
+.del-title {
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  margin-top: 10px;
+  // margin-bottom: -10px;
+  text-align: right;
+  ion-button {
+    // --border-radius: 50%;
+    --color: #cf363c;
+    font-size: medium;
+    font-weight: 100;
+  }
+  ion-icon {
+    font-size: 25px;
+  }
+}
+.seg_header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  ion-button {
+    --background: #fff;
+    --background-activated: #3045a8;
+    --background-activated-opacity: 1;
+    --color: #666666;
+    --color-activated: #fff;
+    min-width: 130px;
+    --border-radius: 5px;
+  }
+  .clickActive {
+    --background: #3045a8;
+    --color: #fff;
+  }
+}
+.img_empty {
+  margin: auto;
+  margin-top: 180px;
+  width: 130px;
+  height: 130px;
+}

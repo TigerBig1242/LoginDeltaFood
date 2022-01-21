@@ -1,0 +1,9 @@
+<ion-list>
+  <!-- <ion-list-header>
+    เลือกรายการ
+  </ion-list-header> -->
+    <ion-item button mode="ios" *ngFor="let l of listPopover" (click)="dismiss(l)" style="color:#3045a8;
+    --color-activated:#3045a8;--color-hover:var(--color-activated)">
+    {{l}}
+  </ion-item>
+</ion-list>

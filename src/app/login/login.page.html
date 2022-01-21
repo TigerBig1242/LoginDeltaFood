@@ -1,0 +1,25 @@
+<ion-content class="ion-padding">
+  
+  <div class="input-login">
+    <h3 class="topic-login">LOGIN</h3>
+    <ion-input [(ngModel)]="login.username" placeholder="Username" class="ion-input-username" type="text">
+      <ion-icon name="person-outline" class="icon-person"></ion-icon>
+    </ion-input>
+    <ion-input [(ngModel)]="login.password" placeholder="Password" class="ion-input-password" type="password">
+      <ion-icon name="mail-outline" class="icon-email"></ion-icon>
+    </ion-input>     
+  </div>
+
+  <div class="ion-button-login">
+    <ion-button class="button-login" shape="round" expand="block" (click)="getLogin()">LOGIN</ion-button>
+    
+    
+  </div>
+
+
+  
+  
+  <!-- <div class="ion-text-center close">
+    <a href="#" (click)="dismiss()">Close</a>
+  </div> -->
+</ion-content>

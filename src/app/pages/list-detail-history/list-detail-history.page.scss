@@ -1,0 +1,132 @@
+ion-content{
+  --background:#e8e8e8 0% 0% no-repeat padding-box;
+}
+.header {
+  background: rgb(67, 97, 238);
+  background: linear-gradient(
+    180deg,
+    rgba(67, 97, 238, 1) 0%,
+    rgba(34, 49, 119, 1) 100%
+  );
+  height: 60px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+
+  .back {
+    text-align: left;
+    padding-left: 10px;
+    z-index: 2;
+    ion-button {
+      width: 60px;
+      margin-left: 15px;
+    }
+    ion-icon {
+      color: #fff;
+      font-size: 30px;
+    }
+    ion-label{
+      margin: 15px 0px 10px;
+    }
+  }
+}
+.overlay {
+  height: auto;
+  min-height: 100%;
+  background: #e8e8e8 0% 0% no-repeat padding-box;
+
+  .body {
+    .menu {
+      padding: 0;
+      background:white;
+      .margin {
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        ion-label {
+          padding-left: 15px;
+          width: 100%;
+          text-align: left;
+          color: #666666;
+          opacity: 1;
+          font-size: 17px;
+        }
+      }
+    }
+
+    .store {
+      width: 100%;
+      margin-top: -5px;
+
+      .id_order {
+        width: 100%;
+
+        --ion-grid-column-padding: 0;
+
+        ion-label {
+          width: 100%;
+          text-align: left;
+          color: #666666;
+          font-weight: bold;
+          font-size: 16px;
+        }
+      }
+      .time {
+        width: 100%;
+
+        --ion-grid-column-padding: 0;
+
+        ion-label {
+          width: 100%;
+          text-align: center;
+          color: #666666;
+          font-size: 16px;
+        }
+      }
+      .see_all {
+        width: 100%;
+
+        --ion-grid-column-padding: 0;
+
+        ion-label {
+          width: 100%;
+          text-align: right;
+          font-size: 16px;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .button-receipt {
+    text-align: right;
+    margin-top: 60px;
+    padding-right: 10px;
+    ion-button {
+      --border-radius: 5px;
+      --border-radius: 5px;
+      color: #e3384c;
+      margin: 0;
+      font-size: 20px;
+      width: 100px;
+      height: 30px;
+    }
+  }
+  .img_success {
+    text-align: center;
+    padding-right: 30px;
+    img {
+      width: 100px;
+      height: 100px;
+      max-width: 100px;
+    }
+  }
+  .img_empty {
+    margin: auto;
+    margin-top: 150px;
+    width: 130px;
+    height: 130px;
+  }
+}

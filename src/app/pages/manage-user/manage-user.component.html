@@ -14,12 +14,91 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="background" style="max-width: 600px; margin-left: auto; margin-right:auto; overflow: auto;">
-  <div class="inside-background" style=" max-width: 600px; margin-left: auto; margin-right:auto;">
+    <div class="inside-background" style=" max-width: 600px; margin-left: auto; margin-right:auto;">
       <div class="body">
         <ion-item class="header-body" lines="full">
           <ion-label>เปิด/ปิด ผู้ดูแลร้าน</ion-label>
         </ion-item>
-        <ion-list class="food_manage" lines="full">
+
+        <div class="header-segment">
+            <ion-toolbar class="toolbar-segment">
+            <div class="segment-curator">
+              <ion-segment (ionChange)="($event)" mode="ios" select-on-focus="true">
+                <ion-segment-button class="segment-button-curator" (click)="selectDisPlay('A')"> <!-- Pattern 1 pass value by function -->
+                  <!-- <ion-segment-button class="segment-button-curator"  (click)="disPlay==1"> Pattern 2 set value in HTML (advance) -->
+                  <ion-icon name="people-sharp"></ion-icon>
+                  <ion-label> ผู้ดูแลระแบบ </ion-label>
+                </ion-segment-button>
+                <ion-segment-button class="segment-button-cook" (click)="selectDisPlay('B')"> <!-- Pattern 1 pass value by function -->
+                  <!-- <ion-segment-button class="segment-button-curator"  (click)="disPlay==0">  Pattern 2 set value in HTML (advance) -->
+                  <ion-icon name="person-sharp"></ion-icon>
+                  <ion-label> คนครัว </ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+            </ion-toolbar>
+            <div *ngIf="disPlay==1" style="color: black;" >
+               <div class="list-curator">
+              <ion-list class="food_manage" lines="full">
+                <ion-item class="list" *ngFor="let u of user">
+                  <img src="{{u.pictureUrl}}">
+                  <div class="block">
+                    <div class="block-a">
+                      <ion-label>ชื่อ : {{u.name}}</ion-label>
+                    </div>
+                    <div *ngIf="u.m_status == 0" class="block-b">
+                      <ion-toggle mode="ios" checked="false" (ionChange)="changeStatusUser(u.m_id,u.m_status)">
+                      </ion-toggle>
+                    </div>
+                    <div *ngIf="u.m_status != 0" class="block-b">
+                      <ion-toggle mode="ios" checked="true" (ionChange)="changeStatusUser(u.m_id,u.m_status)">
+                      </ion-toggle>
+                    </div>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </div>
+            </div>
+            <div *ngIf="disPlay==0" style="color: black;" > 
+              <!-- <ion-list class="food-employee" lines="full">
+                <ion-item class="list-employee" *ngFor="let e of employee">
+                  <img class="img_emp" src="{{'https://market.deltafood.me/api2/' + e.staff.emp_img }}">
+                  <div class="block-employee">
+                    <div class="block-name">
+                      <label>ไอดี : {{e.staff.emp_img}}  </label> 
+                    </div> 
+                    <div class="block-name">
+                      <label>ชื่อ : {{e.staff.emp_name}} </label> 
+                    </div>                   
+                  </div>
+                </ion-item>
+              </ion-list> -->
+            
+              <ion-list class="food_manage" lines="full">
+                <ion-item class="list" *ngFor="let emp of employee">
+                  <img src="{{'https://market.deltafood.me/api2/' + emp.emp_img}}">
+                  <div class="block">
+                    <div class="block-a">
+                      <ion-label>ชื่อ : {{emp.emp_name}}</ion-label>
+                    </div>
+                    <div *ngIf="emp.emp_status == 0" class="block-b">
+                      <ion-toggle mode="ios" checked="false" (ionChange)="switchEmployee(emp.emp_id,emp.emp_status)">
+                      </ion-toggle>
+                    </div>
+                    <div *ngIf="emp.emp_status != 0" class="block-b">
+                      <ion-toggle mode="ios" checked="true" (ionChange)="switchEmployee(emp.emp_id,emp.emp_status)">
+                      </ion-toggle>
+                    </div>
+                  </div>
+                </ion-item>
+              </ion-list>
+            
+            </div>
+          </div>
+
+           
+
+        <!-- <ion-list class="food_manage" lines="full">
           <ion-item class="list" *ngFor="let u of user">
             <img
               src="{{u.pictureUrl}}">
@@ -39,7 +118,7 @@
             </div>
 
           </ion-item>
-        </ion-list>
+        </ion-list> -->
       </div>
     </div>
   </div>

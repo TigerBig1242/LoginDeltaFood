@@ -1,0 +1,35 @@
+<ion-header #header>
+  <div class="header">
+    <div class="back">
+      <ion-item lines="none" style="--background:none; margin-left: -45px;">
+        <ion-button mode="ios" Fill="clear" (click)="close()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-label style="text-align: center; color: white; font-size: 20px;">
+          แก้ไขเมนู
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+<!-- <ion-content> -->
+  <div> 
+    <div class="head-img">
+      <img src="assets\icon\menu.png">
+    </div>  
+    <div class="edit-list">
+      <ion-label>เมนู: {{ editlist.food_name }}</ion-label> <br>   
+        <ion-input [(ngModel)]="list_amount" (ngModelChange)="calculatePrice()"> จำนวน: </ion-input>  <br>                                              
+        <ion-label >ราคารวม: {{ list_amount * price|number }}</ion-label> <br> 
+        <!-- {{ list_amount }}   {{ price }} -->
+    </div>
+    <div>
+      <ion-button class="button-edit" (click)="edit_Detail_List()">
+        แก้ไข
+      </ion-button>
+      <ion-button class="button-close" (click)="close()">
+        ปิด
+      </ion-button>
+    </div>
+  </div>
+<!-- </ion-content> -->

@@ -64,6 +64,7 @@ export class LoginPage implements OnInit {
             } else { 
               this.api.setStorage("userLogin", this.login);
                 //alert("login success");  
+                localStorage.setItem('s_id', res.data.store_id);
                 this.alertController.create({
                   cssClass: 'my-custom-class',
                   // header: 'Alert.',

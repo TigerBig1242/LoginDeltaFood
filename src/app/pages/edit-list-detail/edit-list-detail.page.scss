@@ -1,0 +1,40 @@
+.header {
+    background: rgb(67, 97, 238);
+    background: linear-gradient(
+      180deg,
+      rgba(67, 97, 238, 1) 0%,
+      rgba(34, 49, 119, 1) 100%
+    );
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    .back {
+        text-align: left;
+        ion-button {
+          width: 60px;
+          margin-left: 25px;
+        }
+        ion-icon {
+          color: #fff;
+          font-size: 30px;
+        }
+        ion-label {
+          text-align: center;
+          font-size: 23px;
+          color: #fff;
+          padding-right: 40px;
+        }
+      }
+  }
+
+  .head-img {
+    margin: auto;
+    margin-top: 50px;
+    width: 130px;
+    height: 130px;
+  }
+
+  .edit-list {
+    margin-left: 70px;
+  }

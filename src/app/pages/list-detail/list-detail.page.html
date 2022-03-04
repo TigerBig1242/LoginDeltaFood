@@ -153,18 +153,22 @@
 
             <ion-list lines="none" style="padding: 0; padding-top:10px; padding-bottom:10px; background:white;">
               <div style="height:10px;"></div>
-              <div *ngFor="let o of detail.food ; let i = index">
-                <ng-template [ngIf]="!o.food_detail">
+              <!-- <div *ngFor="let o of detail.food ; let i = index">
+                <ng-template [ngIf]="!o.food_detail">  
                   <div class="store">
                     <div class="id_order" style="width:100%; margin-top:-10px;">
                       <ion-grid style="--ion-grid-padding:0">
                         <ion-row>
                           <ion-col size="8.5" style="--ion-grid-column-padding:0">
                             <ion-item lines="none" style="--background:none">
-                              <ion-label style="color: #434343; margin:0; font-size: 16px;">(x{{o.amount}}) {{o.food_name}}<div
-                                  *ngIf="o.option">
+                              <ion-button (click)="editDetail(o)"  mode="ios" Fill="clear">
+                                <ion-icon name="pencil" color="dark"></ion-icon>
+                              </ion-button>
+                              <ion-label style="color: #434343; margin:0; font-size: 16px;">(x{{o.amount}}) {{o.food_name}}  
+                                <div *ngIf="o.option">
                                   <span *ngFor="let opt of o.option"
-                                    style="padding-left: 25px; font-size: 14px; color: #666666;">*{{opt.title}}<br></span>
+                                    style="padding-left: 25px; font-size: 14px; color: #666666;">*{{opt.title}}<br>
+                                  </span>
                                 </div>
                               </ion-label>
                             </ion-item>
@@ -179,7 +183,71 @@
                       </ion-grid>
                     </div>
                   </div>
+                </ng-template> -->
+
+                <div *ngFor="let o of detail.food; let i = index">
+                  <ng-template [ngIf]="!o.food_detail">  
+                    <div class="store">
+                      <div class="id_order" style="width:100%; margin-top:-10px;">
+                        <ion-grid style="--ion-grid-padding:0">
+                          <ion-row>
+                            <ion-col size="8.5" style="--ion-grid-column-padding:0">
+                              <ion-item lines="none" style="--background:none">
+                                <ion-button (click)="editDetail(o)"  mode="ios" Fill="clear">
+                                  <ion-icon name="pencil" color="dark"></ion-icon>
+                                </ion-button>
+                                <ion-label style="color: #434343; margin:0; font-size: 16px;">(x{{o.amount}}) {{o.food_name}} 
+                                  <div *ngIf="o.option">
+                                    <span *ngFor="let opt of o.option"
+                                      style="padding-left: 25px; font-size: 14px; color: #666666;">*{{opt.title}}<br>
+                                    </span>
+                                  </div>
+                                </ion-label>
+                              </ion-item>
+                            </ion-col>
+                            <ion-col size="3.5" style="--ion-grid-column-padding:0">
+                              <ion-item lines="none" style="--background:none; display: flex; align-items: flex-start">
+                                <ion-label style=" font-size:16px; margin:0; text-align:right;color:#434343; ">
+                                  {{o.sum_price|number}} บาท</ion-label>
+                              </ion-item>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+                      </div>
+                    </div>
+                  </ng-template>
+
+                <!-- <div *ngFor="let editMFS of editMenuFromStorage.orderdetail">
+                <ng-template [ngIf]="editMFS.food_detail">
+                  <div class="store">
+                    <div class="id_order" style="width:100%;">
+                      <ion-grid style="--ion-grid-padding:0">
+                        <ion-row>
+                          <ion-col size="8.5" style="--ion-grid-column-padding:0">
+                            <ion-item lines="none" style="--background:none">
+                              <ion-label style=" margin:0; font-size: 16px;">(x{{editMenuFromStorage.amount}}) {{editMenuFromStorage.food_name}} <br>
+                                <div *ngIf="o.option">
+                                  <span *ngFor="let editMFS of editMenuFromStorage.amount"
+                                    style="padding-left: 25px; font-size: 14px; color: #666666;">*{{opt.title}}<br></span>
+                                </div>
+                                <span style="padding-left: 25px;font-size: 13px;color:#979797; margin:0;">*
+                                  {{editMenuFromStorage.food_detail}}</span>
+                              </ion-label>
+                            </ion-item>
+                          </ion-col>
+                          <ion-col size="3.5" style="--ion-grid-column-padding:0">
+                            <ion-item lines="none" style=" vertical-align:top;--background:none;">
+                              <ion-label
+                                style=" font-size:16px; margin:0; margin-top: -20px; text-align:right;color:#434343; ">
+                                {{editMenuFromStorage.sum_price|number}} บาท</ion-label>
+                            </ion-item>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </div>
+                  </div>
                 </ng-template>
+                </div> -->
 
                 <ng-template [ngIf]="o.food_detail">
                   <div class="store">
@@ -222,7 +290,8 @@
             </ion-label>
             <div style="display: inline-block;">
               <ion-label style="color: #05be4f; font-size: 18px; padding-right: 10px;">
-                {{detail.order_price|number}} บาท
+                <!-- {{detail.order_price|number}} บาท -->
+                {{sumToTal(detail)|number}} บาท
               </ion-label>
             </div>
           </ion-item>
@@ -231,6 +300,14 @@
             <div class="button-confirm">
               <ion-button type="submit" (click)="alertConfirmOrder(detail.order_id)">
                 ทำอาหาร
+              </ion-button>
+              <div style="margin-bottom: 20px;"></div>
+            </div>
+          </ng-template>
+          <ng-template [ngIf]="detail.statusOrStore_id == '1'">
+            <div class="button-confirm">
+              <ion-button type="submit" (click)="checkStatus_editListDetailMenu(detail.order_id)">
+                แก้ไขเมนู
               </ion-button>
               <div style="margin-bottom: 20px;"></div>
             </div>

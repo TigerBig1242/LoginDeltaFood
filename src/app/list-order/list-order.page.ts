@@ -24,6 +24,8 @@ export class ListOrderPage {
 
   ngOnInit() {
     this.firebase_();
+    this.getOrderIn();
+    // this.api.setStorage('s_id', 3);
   }
 
   ionViewWillEnter() {}
@@ -39,6 +41,7 @@ export class ListOrderPage {
   }
   getOrderIn() {
     let s_id = JSON.parse(localStorage.getItem('s_id'));
+    // console.log(s_id);
     if(s_id){
       let data = s_id + '/' + this.pages;
       this.api.get('storeOrder_in/' + data).then((res: any) => {
@@ -83,4 +86,5 @@ export class ListOrderPage {
   getDetailOrder(orderId) {
     this.route.navigate(['/list-detail/' + orderId]);
   }
+
 }

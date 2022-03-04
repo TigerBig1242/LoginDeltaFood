@@ -109,4 +109,60 @@
       height: 100px;
     }
   }
+
+  // .header-segment {
+  //   background: white;
+  // }
+
+  .toolbar-segment {
+    --background: white;
+  }
+  
+  .segment-button-curator {
+    width: -webkit-fill-available;
+    background-color: #e4e4e4;
+    // border-radius: 50px;
+    color: black;
+  }
+  .segment-button-cook {
+    width: -webkit-fill-available;
+    background-color: #e4e4e4;
+    // border-radius: 50px;
+    color: black;
+  }
+  
+  // .list-curator {
+  //   width: auto;
+  // }
+  
+  // .header-segment {
+  //   display: flex;
+  //   .segment-curator {
+  //     width: -webkit-fill-available;
+  //       .segment-button-curator {
+  //         background-color: #405ce3;
+  //       }
+  //   }
+  //   .segment-cook {
+  //     width: -webkit-fill-available;
+  //       .segment-button-cook {
+  //         background-color: #405ce3;
+  //       }
+  //   }
+  // }
+
+  .list-employee {
+    --background: white;
+  }
+  
+  .img_emp {
+    width: 50px;
+    height: 50px;
+    --color: black;
+    --background: black;
+  }
+
+  .block-name {
+    color: black;
+  }
 }
